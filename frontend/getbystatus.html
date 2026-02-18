@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get info by status</title>
+</head>
+<body>
+
+    <center>
+
+    <h2>Get information by status</h2>
+
+    <select onchange="loadByStatus(this.value)">
+        <option value="">Select Status</option>
+        <option value="SELECTED">SELECTED</option>
+        <option value="REJECTED">REJECTED</option>
+        <option value="REVIEWED">REVIEWED</option>
+    </select>
+
+    <div id="applist"></div>
+    
+     <br><br>
+    <button onclick="back()">Back</button>
+
+    </center>
+    
+    <script src="AdminPage/getbystatus.js"></script>
+</body>
+</html>

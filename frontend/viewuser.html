@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Applied user name</title>
+</head>
+<body>
+    <center>
+        <h2>to view users</h2>
+    <select onchange="loadApplications(this.value)">
+
+    <option value="">Select Job</option>
+    <option value="1">Java Developer</option>
+    <option value="2">Accountant</option>
+    <option value="3">Data Analyst</option>
+    <option value="4">AI Engineer</option>
+
+    </select>
+
+    <div id="appList"></div>
+
+    <br><br>
+    <button onclick="back()">Back</button>
+
+    </center>
+
+
+    <script src="AdminPage/viewusers.js"></script>
+</body>
+</html>

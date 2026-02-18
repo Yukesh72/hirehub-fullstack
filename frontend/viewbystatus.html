@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View by status</title>
+</head>
+<body>
+
+    <center>
+    <h2>View By Status</h2>
+
+    <select onchange="loadviewpage(this.value)">
+    <option value="">Select one</option>
+    <option value="SELECTED">SELECTED</option>
+    <option value="REJECTED">REJECTED</option>
+    <option value="REVIEWED">REVIEWED</option>
+    </select>
+
+    <div id="myapp"></div>
+
+    <br>
+    <button onclick="window.location.href='mainuserpage.html'">Back</button>
+
+    </center>
+
+    <script src="UserPage/viewbystatus.js"></script>
+</body>
+</html>
