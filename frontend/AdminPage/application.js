@@ -10,8 +10,12 @@ fetch(`http://localhost:8080/api/applyportal/userid/${userId}`) //SHOW APPLIED J
   .then(res => res.json())
   .then(applications => 
     {
+
+      console.log("userid ->" ,userId);
     const container = document.getElementById("Applied");
     container.innerHTML = "";
+
+    console.log("step 2");
 
     if(applications.length===0)
     {
@@ -19,9 +23,13 @@ fetch(`http://localhost:8080/api/applyportal/userid/${userId}`) //SHOW APPLIED J
       return;
     }
 
+    console.log("step 3");
+
     fetch(`http://localhost:8080/api/jobdetails/showjobdetails`)
         .then(res => res.json())
         .then(job => {
+
+          console.log("step 4");
 
           applications.forEach(app => 
           {
@@ -32,6 +40,8 @@ fetch(`http://localhost:8080/api/applyportal/userid/${userId}`) //SHOW APPLIED J
                if (app.status === "SELECTED") color = "green";
                else if (app.status === "REJECTED") color = "red";
                else if (app.status === "REVIEWED") color = "orange";
+
+               console.log("step 5");
             
           const div = document.createElement("div");
           div.innerHTML = `
@@ -46,6 +56,8 @@ fetch(`http://localhost:8080/api/applyportal/userid/${userId}`) //SHOW APPLIED J
             <hr>
           `;
           container.appendChild(div);
+
+          console.log("step 6");
           });
         });
     })

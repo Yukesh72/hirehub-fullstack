@@ -28,8 +28,9 @@ public class applyserice
 
     public List<apply> jobIds(Long jobid)
     {
-        return ar.findByjobid(jobid);
+        return ar. findByJobid(jobid);
     }
+
     public apply loginexist(apply a)
     {
         boolean alreadyApplied = ar.existsByUseridAndJobid(a.getUserid(), a.getJobid());
@@ -74,6 +75,7 @@ public class applyserice
         return ar.save(a);
 
     }
+
 
 
 

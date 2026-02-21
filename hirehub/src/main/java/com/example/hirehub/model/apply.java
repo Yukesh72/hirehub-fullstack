@@ -15,14 +15,11 @@ public class apply
     private Long applyid;
 
     private Long userid;
-    private long jobid;
+    private Long jobid;
 
     @Column(nullable = false)
     private String status="APPLIED";
 
-    @ManyToOne
-    @JoinColumn(name = "job_id")
-    private job jobs;
 
 
     public void setStatus(String status)
@@ -40,10 +37,9 @@ public class apply
         return userid;
     }
 
+
     public Long getJobid()
     {
         return jobid;
     }
-
-
 }

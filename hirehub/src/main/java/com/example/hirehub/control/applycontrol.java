@@ -92,15 +92,6 @@ public class applycontrol
             return as.withdrawapplication(applyid);
         }
 
-    @GetMapping("/getinfobyapply/{id}")
-    public ResponseEntity<apply> getInfo(@PathVariable Long id)
-    {
-        return a1.findByApplyIdWithJob(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
-
-
 
 
 

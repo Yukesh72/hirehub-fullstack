@@ -22,22 +22,35 @@ fetch("http://localhost:8080/api/jobdetails/showjobdetails")  //SHOW JOBS
 
 //--------------------------------------------------------------------------
 
-function applyJob(jobId) {                                //APPLY JOBS
-  console.log("Apply clicked:", jobId); // DEBUG
+function applyJob(id)                                     //apply jobs
+{
+    console.log("Apply clicked:", id);
 
-  fetch("http://localhost:8080/api/applyportal/apply", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      userid: userId,
-      jobid: jobId
+    fetch("http://localhost:8080/api/applyportal/apply", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            userid: localStorage.getItem("userId"),
+            jobid:id
+        })
     })
-  })
-  .then(res => res.json())
-  .then(() => alert("Applied successfully ❤"))
-  .catch(err => {
-    console.log(err);
-    alert("You already applied for this job ❌");
-  });
+    .then(async res => {
+
+        if (!res.ok) {
+            const text = await res.text();
+            throw new Error(text);
+        }
+
+        return res.json();
+    })
+    .then(data => {
+        alert("Applied Successfully!");
+    })
+    .catch(err => {
+        alert(err.message);
+    });
 }
+
 

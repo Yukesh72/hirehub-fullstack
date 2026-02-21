@@ -17,4 +17,9 @@ public class job
     private String title;
     private String company;
     private String jobdescription;
+
+    public Long getId()
+    {
+        return id;
+    }
 }

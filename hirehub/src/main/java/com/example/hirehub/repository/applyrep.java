@@ -13,18 +13,13 @@ import java.util.Optional;
 public interface applyrep extends JpaRepository<apply,Long>
 {
     List<apply> findByuserid(Long userid);
-    List<apply> findByjobid(Long jobid);
-    boolean existsByUseridAndJobid(Long userid,Long jobid);
+    boolean existsByUseridAndJobid(Long userid, Long jobid);
+    List<apply> findByJobid(Long jobid);
+
     Long countByStatus(String status);
     List<apply> findByStatus(String status);
     List<apply> findByuseridAndStatus(Long userid, String status);
 
-    @Query("""
-    SELECT a FROM apply a
-    JOIN FETCH a.jobs
-    WHERE a.applyid = :id
-""")
-    Optional<apply> findByApplyIdWithJob(@Param("id") Long id);
 
 
 }

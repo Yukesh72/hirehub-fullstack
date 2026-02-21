@@ -24,7 +24,6 @@ function loadviewpage(status)
             cont.innerHTML +=`
             <div class="one">
             <p><b>Job ID :</b> ${app.jobid}</p>
-            <button onclick="check(${app.applyid})">view info</button>
             <button onclick="viewjob(${app.jobid})">View Job</button>
             <button onclick="withdraw(${app.applyid})">WithDrawn</button>
 
@@ -36,12 +35,14 @@ function loadviewpage(status)
     .catch(err=>console.error(err));
 }
 
-function viewjob(jobid)            //view job by id
+function viewjob(jobid)                                                   //view job by id
 {
     window.location.href='jobs.html?jobid=${jobid}';
 }
 
-function withdraw(applyid)
+
+
+function withdraw(applyid)                                               //WITHDRAW A JOB
 {
     fetch(`http://localhost:8080/api/applyportal/withdraw/${applyid}`,
         {
@@ -54,20 +55,8 @@ function withdraw(applyid)
             loadviewpage();
         })
 }
-function check(applyid)
-{
-    fetch(`http://localhost:8080/api/applyportal/getinfobyapply/${applyid}`)
-    .then(res => res.json())
-    .then(app => {
 
-        alert(
-            "Title: " + app.jobs.title + "\n" +
-            "Company: " + app.jobs.company + "\n" +
-            "Description: " + app.jobs.jobdescription
-        );
 
-    });
-}
 
 
 
