@@ -33,4 +33,9 @@ public class user
     {
         this.role=role;
     }
+
+    public String getName()
+    {
+        return name;
+    }
 }
