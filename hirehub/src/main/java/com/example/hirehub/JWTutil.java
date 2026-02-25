@@ -3,14 +3,16 @@ package com.example.hirehub;
 import com.example.hirehub.model.user;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
-
+import javax.crypto.SecretKey;
 import java.util.Date;
 
 @Component
 public class JWTutil
 {
-    private String secret="yukey";
+    private final SecretKey key =
+            Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
     public String gentoken(String email)
     {
@@ -18,14 +20,14 @@ public class JWTutil
                 .setSubject(email)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis()+1000*60*60))
-                .signWith(SignatureAlgorithm.HS256,secret)
+                .signWith(key)
                 .compact();
     }
 
     public String checktoken(String token)
     {
         return Jwts.parser()
-                .setSigningKey(secret)
+                .setSigningKey(key)
                 .parseClaimsJws(token)
                 .getBody()
                 .getSubject();
