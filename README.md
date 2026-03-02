@@ -1,13 +1,15 @@
 🚀 HireHub – Job Portal Web Application
-📌 Project Overview
+
+📌 Project Overview :
 
 HireHub is a Full Stack Job Portal web application that allows users to register, login, and apply for jobs.
 Admins can manage job postings and monitor users.
 
 This project demonstrates authentication, role-based access, and REST API integration using modern web technologies.
 
-🛠️ Tech Stack
-🔹 Frontend
+🛠️ Tech Stack :
+
+🔹 Frontend :
 
 HTML
 
@@ -17,7 +19,7 @@ JavaScript
 
 Fetch API
 
-🔹 Backend
+🔹 Backend :
 
 Java
 
@@ -27,12 +29,13 @@ Spring Security
 
 JWT Authentication
 
-🔹 Database
+🔹 Database :
 
 MySQL
 
-🔐 Features
-👤 User
+🔐 Features :
+
+👤 User :
 
 Register
 
@@ -44,7 +47,7 @@ Browse jobs
 
 Apply for jobs
 
-🛠️ Admin
+🛠️ Admin :
 
 Admin login
 
@@ -56,7 +59,7 @@ Delete jobs
 
 View registered users
 
-🔑 Authentication Flow
+🔑 Authentication Flow :
 
 User logs in.
 
@@ -68,7 +71,8 @@ Token is sent in Authorization header for protected APIs.
 
 Backend validates token before allowing access.
 
-📂 Project Structure
+📂 Project Structure :
+
 HireHub
 │
 ├── frontend/
@@ -83,8 +87,10 @@ HireHub
 │   ├── repository/
 │   ├── model/
 │   └── security/
-▶️ How to Run the Project
-Backend
+
+▶️ How to Run the Project :
+
+Backend :
 
 Open project in IDE (IntelliJ / Eclipse)
 
@@ -95,13 +101,13 @@ Run Spring Boot application
 Server runs at:
 http://localhost:8080
 
-Frontend
+Frontend :
 
 Open HTML files using Live Server
 
 Connects to backend APIs
 
-🎯 Learning Outcomes
+🎯 Learning Outcomes :
 
 REST API development
 
@@ -113,7 +119,7 @@ Frontend & Backend integration
 
 CORS configuration
 
-📌 Future Improvements
+📌 Future Improvements :
 
 Token refresh mechanism
 
@@ -123,7 +129,7 @@ Search & filter jobs
 
 Deploy to cloud (AWS / Render)
 
-👨‍💻 Developed By
+👨‍💻 Developed By :
 
-Mukesh
+Yukesh K.
 Full Stack Developer (Java + Spring Boot)
