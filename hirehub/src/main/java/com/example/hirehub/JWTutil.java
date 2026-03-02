@@ -4,6 +4,7 @@ import com.example.hirehub.model.user;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import javax.crypto.SecretKey;
 import java.util.Date;
@@ -11,6 +12,9 @@ import java.util.Date;
 @Component
 public class JWTutil
 {
+    @Autowired
+    private user u;
+
     private final SecretKey key =
             Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
@@ -18,6 +22,7 @@ public class JWTutil
     {
         return Jwts.builder()
                 .setSubject(email)
+                .claim("role",u.getRole())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis()+1000*60*60))
                 .signWith(key)

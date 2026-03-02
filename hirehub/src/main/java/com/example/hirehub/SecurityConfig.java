@@ -28,6 +28,13 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 );
 
+                http
+                        .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/api/user/**").hasRole("USER")
+                        .anyRequest().authenticated()
+                        );
+
         return http.build();
     }
 }
