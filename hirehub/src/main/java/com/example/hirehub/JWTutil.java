@@ -1,6 +1,7 @@
 package com.example.hirehub;
 
 import com.example.hirehub.model.user;
+import com.example.hirehub.repository.Repository1;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -12,17 +13,16 @@ import java.util.Date;
 @Component
 public class JWTutil
 {
-    @Autowired
-    private user u;
+
 
     private final SecretKey key =
             Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
-    public String gentoken(String email)
+    public String gentoken(String email,String role)
     {
         return Jwts.builder()
                 .setSubject(email)
-                .claim("role",u.getRole())
+                .claim("role",role)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis()+1000*60*60))
                 .signWith(key)

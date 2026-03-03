@@ -31,8 +31,8 @@ public class JWTcontrol
         {
             throw new RuntimeException("wrong password bro");
         }
-        String token=jwt.gentoken(dbusers.getemail());
+        u.setToken(jwt.gentoken(dbusers.getemail(), dbusers.getRole()));
 
-        return ResponseEntity.ok(token);
+        return ResponseEntity.ok(u.getToken());
     }
 }

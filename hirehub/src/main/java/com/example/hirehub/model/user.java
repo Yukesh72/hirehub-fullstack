@@ -16,7 +16,8 @@ public class user
     private String name;
     private String email;
     private String password;
-    private String role;
+    private  String role;
+    private String token;
 
 
     public String getpassword()
@@ -34,7 +35,7 @@ public class user
         this.role=role;
     }
 
-    public String  getRole()
+    public  String  getRole()
     {
         return role;
     }
@@ -42,5 +43,14 @@ public class user
     public String getName()
     {
         return name;
+    }
+
+    public String getToken()
+    {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }
