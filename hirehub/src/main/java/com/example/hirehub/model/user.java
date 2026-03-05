@@ -53,4 +53,5 @@ public class user
     public void setToken(String token) {
         this.token = token;
     }
+
 }

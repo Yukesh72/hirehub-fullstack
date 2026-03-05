@@ -1,5 +1,6 @@
 package com.example.hirehub.control;
 
+import com.example.hirehub.DTO.LoginResponse;
 import com.example.hirehub.repository.Repository1;
 import com.example.hirehub.service.service1;
 import com.example.hirehub.model.user;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.example.hirehub.JWTutil;
 
 @RestController
 @RequestMapping("/api/userlogin")
@@ -18,6 +20,9 @@ public class control1
 
     @Autowired
     Repository1 r1;
+
+    @Autowired
+    JWTutil jw;
 
     @PostMapping(value = "/register",consumes = "application/json")
     public user reg(@RequestBody user u)
@@ -43,8 +48,11 @@ public class control1
                     .status(HttpStatus.UNAUTHORIZED)
                     .body("Invalid email or password");
         }
+        u.setToken(jw.gentoken(loggedUser.getemail(), loggedUser.getRole()));
 
-        return ResponseEntity.ok(loggedUser);
+        LoginResponse response = new LoginResponse(u.getToken(), loggedUser);
+
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/count")

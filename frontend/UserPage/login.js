@@ -27,13 +27,13 @@ function login(event)
         })
         .then(data=>
         {
-            localStorage.setItem("userId",data.id);
-            localStorage.setItem("role",data.role);
+            localStorage.setItem("userId",data.user.id);
+            localStorage.setItem("role",data.user.role);
             localStorage.setItem("token", data.token);
 
             alert("Login Successfully !");
 
-            if (data.role === "ADMIN")
+            if (data.user.role === "ADMIN")
             {
                 window.location.href ="adminloginpage.html";
             } 
