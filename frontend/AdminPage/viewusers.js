@@ -1,4 +1,5 @@
 const role=localStorage.getItem("role");
+const token=localStorage.getItem("token");
 
 if(role!==ADMIN)
 {
@@ -8,7 +9,14 @@ if(role!==ADMIN)
 
 function loadApplications(jobId)
 {
-    fetch(`http://localhost:8080/api/applyportal/jobid/${jobId}`)
+    fetch(`http://localhost:8080/api/applyportal/jobid/${jobId}`,
+        {
+            method:"GET",
+            headers:
+            {
+                 "Authorization": "Bearer " + token
+            }
+        })
     .then(res => res.json())
     .then(data => 
     {

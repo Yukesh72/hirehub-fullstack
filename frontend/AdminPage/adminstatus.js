@@ -1,4 +1,5 @@
 const role=localStorage.getItem("role");
+const token=localStorage.getItem("token");
 
 if(role!=='ADMIN')                          //to change status
 {
@@ -6,12 +7,20 @@ if(role!=='ADMIN')                          //to change status
     window.location.href="jobs.html";
 }
 
-fetch("http://localhost:8080/api/applyportal/all")
+fetch("http://localhost:8080/api/applyportal/all",
+  {
+      method:"GET",
+      headers:{
+          "Authorization": "Bearer " + token
+      }
+  })
 .then(res => res.json())
 .then(data =>
 {
     const divs=document.getElementById("ndiv");
     divs.innerText="";
+
+    console.log(token);
 
     data.forEach(app => 
     {

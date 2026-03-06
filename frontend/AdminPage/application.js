@@ -1,4 +1,5 @@
 const userId = localStorage.getItem("userId");
+const token=localStorage.getItem("token");
 
 if(!userId)                                      //applied jobs page
 {
@@ -6,7 +7,14 @@ if(!userId)                                      //applied jobs page
   window.location.href="login.html";
 }
 
-fetch(`http://localhost:8080/api/applyportal/userid/${userId}`) //SHOW APPLIED JOB INFO
+fetch(`http://localhost:8080/api/applyportal/userid/${userId}`,     //SHOW APPLIED JOB INFO
+  {
+      method:"GET",
+      headers:
+      {
+          "Authorization": "Bearer " + token
+      }
+  }) 
   .then(res => res.json())
   .then(applications => 
     {

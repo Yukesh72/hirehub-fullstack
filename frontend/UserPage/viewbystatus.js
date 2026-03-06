@@ -1,4 +1,5 @@
 const userId=localStorage.getItem("userId");
+const token=localStorage.getItem("token");
 
 function loadviewpage(status)
 {
@@ -8,7 +9,14 @@ function loadviewpage(status)
         url += `?status=${status}`;
     }
 
-    fetch(url)
+    fetch(url,
+        {
+            method:"GET",
+            headers:
+            {
+                "Authorization": "Bearer " + token
+            }
+        })
     .then(res=>res.json())
     .then(data=>{
         const cont=document.getElementById("myapp");

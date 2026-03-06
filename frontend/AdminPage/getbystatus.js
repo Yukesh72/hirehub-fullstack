@@ -1,4 +1,5 @@
 const role=localStorage.getItem("role");
+const token=localStorage.getItem("token");
 
 if(role!=='ADMIN')                          //to change status
 {
@@ -12,7 +13,13 @@ function loadByStatus(status)
     ? `http://localhost:8080/api/applyportal/getstatus/status/${status}`
     : `http://localhost:8080/api/applyportal/getstatus`;
 
-    fetch(url)
+    fetch(url,{
+        method:"GET",
+        headers:
+        {
+             "Authorization": "Bearer " + token
+        }
+    })
     .then(res=>res.json())
     .then(data=>
     {

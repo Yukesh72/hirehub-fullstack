@@ -1,10 +1,20 @@
 const userId = localStorage.getItem("userId");
+const token=localStorage.getItem("token");
 
-fetch("http://localhost:8080/api/jobdetails/showjobdetails")  //SHOW JOBS
+fetch("http://localhost:8080/api/jobdetails/showjobdetails",    //SHOW JOB
+    {
+        method:"GET",
+        headers:
+        {
+            "Authorization": "Bearer " + token           //TOKEN AUTH
+        }
+    })
   .then(res => res.json())
   .then(data => {
     const jobDiv = document.getElementById("jobList");
     jobDiv.innerHTML = ""; // clear
+    
+    console.log("token:",token);
 
     data.forEach(job => {
       const div = document.createElement("div");

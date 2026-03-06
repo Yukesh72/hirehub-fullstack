@@ -1,8 +1,10 @@
+const token=localStorage.getItem("token");
 
 // add job function for admin only
 function addJob() {
   fetch("http://localhost:8080/api/jobdetails/addjobdetails", {
     method: "POST",
+    headers: {"Authorization": "Bearer " + token},
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       title: document.getElementById("title").value,
