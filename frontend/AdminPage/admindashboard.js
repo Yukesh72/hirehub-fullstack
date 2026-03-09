@@ -24,6 +24,10 @@ fetch("http://localhost:8080/api/applyportal/applystatusget/REJECTED")
 
   function loginout()
   {
+        localStorage.removeItem("token");
+        localStorage.removeItem("userId");
+        localStorage.removeItem("role");
+        
         window.location.href="login.html";
   }
 

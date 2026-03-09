@@ -25,6 +25,12 @@ public class jobcontrol
         return js.savejob(j);
     }
 
+    @GetMapping("/job/search")
+    public List<job> searchjob(@RequestParam String keyword)
+    {
+        return j1.findByTitleContainingIgnoreCase(keyword);
+    }
+
     @GetMapping("/showjobdetails")
     public List<job> showjobdetails()
     {

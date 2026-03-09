@@ -16,3 +16,12 @@ function viewbystatus()
 console.log(userId);
 console.log(role);
 console.log(token);
+
+function logout()
+{
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("role");
+
+    window.location.href="login.html";
+}
