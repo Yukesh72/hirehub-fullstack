@@ -63,31 +63,6 @@ function applyJob(id)                                     //apply jobs
     });
 }
 
-function searchjob()
-{
-     const keyword = document.getElementById("Search").value;
-     const token=localStorage.getItem("token");
 
-    fetch("http://localhost:8080/api/jobdetails/job/search?keyword=" +keyword ,
-        {
-            method:"GET",
-            headers:
-            {
-                "Authorization": "Bearer " + token 
-            }
-        })
-        .then(res=>
-        {
-            if(!res.ok)
-            {
-                alert("failed")
-            }
-            return res.json()
-        })
-        .then(data=>{
-            console.log(data);
-        })
-        .catch(err=>console.log(err));
-}
 
 
