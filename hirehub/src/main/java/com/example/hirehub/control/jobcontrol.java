@@ -19,19 +19,19 @@ public class jobcontrol
     @Autowired
     jobrep j1;
 
-    @PostMapping("/addjobdetails")
+    @PostMapping("/admin/addjobdetails")
     public job addjob(@RequestBody job j)
     {
         return js.savejob(j);
     }
 
-    @GetMapping("/job/search")
+    @GetMapping("/user/job/search")
     public List<job> searchjob(@RequestParam String keyword)
     {
         return j1.findByTitleContainingIgnoreCase(keyword);
     }
 
-    @GetMapping("/showjobdetails")
+    @GetMapping("/user/showjobdetails")
     public List<job> showjobdetails()
     {
         return js.getAlljobs();
@@ -43,7 +43,7 @@ public class jobcontrol
         return js.getJobById(id);
     }
 
-    @GetMapping("/count")
+    @GetMapping("/admin/count")
     public Long usercount()
     {
         return j1.count();

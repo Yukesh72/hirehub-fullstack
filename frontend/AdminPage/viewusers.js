@@ -9,7 +9,7 @@ if(role!==ADMIN)
 
 function loadApplications(jobId)
 {
-    fetch(`http://localhost:8080/api/applyportal/jobid/${jobId}`,
+    fetch(`http://localhost:8080/api/applyportal/admin/jobid/${jobId}`,
         {
             method:"GET",
             headers:

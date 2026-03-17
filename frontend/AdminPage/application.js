@@ -7,7 +7,7 @@ if(!userId)                                      //applied jobs page
   window.location.href="login.html";
 }
 
-fetch(`http://localhost:8080/api/applyportal/userid/${userId}`,     //SHOW APPLIED JOB INFO
+fetch(`http://localhost:8080/api/applyportal/user/userid/${userId}`,     //SHOW APPLIED JOB INFO
   {
       method:"GET",
       headers:
@@ -33,7 +33,14 @@ fetch(`http://localhost:8080/api/applyportal/userid/${userId}`,     //SHOW APPLI
 
     console.log("step 3");
 
-    fetch(`http://localhost:8080/api/jobdetails/showjobdetails`)
+    fetch(`http://localhost:8080/api/jobdetails/user/showjobdetails`,
+      {
+         method:"GET",
+         headers:
+         {
+            "Authorization": "Bearer " + token
+         }
+      })
         .then(res => res.json())
         .then(job => {
 

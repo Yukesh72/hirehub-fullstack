@@ -7,11 +7,14 @@ if(role!=='ADMIN')                          //to change status
     window.location.href="jobs.html";
 }
 
-fetch("http://localhost:8080/api/applyportal/all",
+fetch("http://localhost:8080/api/applyportal/admin/all",
   {
+
+
       method:"GET",
-      headers:{
-          "Authorization": "Bearer " + token
+      headers:
+      {
+         "Authorization": "Bearer " + localStorage.getItem("token")
       }
   })
 .then(res => res.json())
@@ -50,8 +53,13 @@ function updateStatus(applyid, status)
 {
   console.log("Updating status 👉", applyid, status);       //to save status changes in DB
 
-  fetch(`http://localhost:8080/api/applyportal/applystatus/${applyid}?status=${status}`, {
-    method: "PUT"
+  fetch(`http://localhost:8080/api/applyportal/admin/applystatus/${applyid}?status=${status}`, 
+  {
+      method: "PUT",
+      headers:
+      {
+          "Authorization": "Bearer " + localStorage.getItem("token")
+      }
   })
   .then(res => {
     console.log("Response status 👉", res.status);

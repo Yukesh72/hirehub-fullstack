@@ -6,7 +6,7 @@ function searchjob()
      const keyword = document.getElementById("Search").value;
      const token=localStorage.getItem("token");
 
-    fetch("http://localhost:8080/api/jobdetails/job/search?keyword=" +keyword ,
+    fetch("http://localhost:8080/api/jobdetails/user/job/search?keyword=" +keyword ,
         {
             method:"GET",
             headers:
@@ -48,7 +48,7 @@ function applyJob(id)                                     //apply jobs
 {
     console.log("Apply clicked:", id);
 
-    fetch("http://localhost:8080/api/applyportal/apply", {
+    fetch("http://localhost:8080/api/applyportal/user/apply", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

@@ -1,4 +1,4 @@
-package com.example.hirehub;
+package com.example.hirehub.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

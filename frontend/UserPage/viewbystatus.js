@@ -3,7 +3,7 @@ const token=localStorage.getItem("token");
 
 function loadviewpage(status)
 {
-   let url = `http://localhost:8080/api/applyportal/getuser/${userId}`;
+   let url = `http://localhost:8080/api/applyportal/user/getuser/${userId}`;
 
     if (status) {
         url += `?status=${status}`;
@@ -52,9 +52,13 @@ function viewjob(jobid)                                                   //view
 
 function withdraw(applyid)                                               //WITHDRAW A JOB
 {
-    fetch(`http://localhost:8080/api/applyportal/withdraw/${applyid}`,
+    fetch(`http://localhost:8080/api/applyportal/user/withdraw/${applyid}`,
         {
             method:"PUT",
+            headers:
+            {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            }
 
         })
         .then(()=>

@@ -55,7 +55,7 @@ public class control1
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/count")
+    @GetMapping("/admin/count")
     public Long usercount()
     {
         return r1.count();

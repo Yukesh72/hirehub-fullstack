@@ -1,7 +1,5 @@
-package com.example.hirehub;
+package com.example.hirehub.security;
 
-import com.example.hirehub.security.JWTfilter;
-import com.example.hirehub.security.JWTutil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,15 +21,20 @@ public class SecurityConfig
     {
 
         http
+                .cors(cors->{})
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/userlogin/login",
-                                "/api/**",
-                                "/api/userlogin/register",
-                                "/auth/**").permitAll()
+                        .requestMatchers("/api/userlogin/login/**",
+                                "/api/userlogin/register/**").permitAll()
+                        .requestMatchers("/api/userlogin/admin/**",
+                                "/api/jobdetails/admin/**",
+                                "/api/applyportal/admin/**").hasAuthority("ADMIN")
+                        .requestMatchers("/api/userlogin/user/**",
+                                "/api/jobdetails/user/**",
+                                "/api/applyportal/user/**").hasAuthority("USER")
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form.disable())

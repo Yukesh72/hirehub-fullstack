@@ -10,8 +10,8 @@ if(role!=='ADMIN')                          //to change status
 function loadByStatus(status)
 {
     let url= status
-    ? `http://localhost:8080/api/applyportal/getstatus/status/${status}`
-    : `http://localhost:8080/api/applyportal/getstatus`;
+    ? `http://localhost:8080/api/applyportal/admin/getstatus/status/${status}`
+    : `http://localhost:8080/api/applyportal/admin/getstatus`;
 
     fetch(url,{
         method:"GET",

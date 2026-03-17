@@ -23,7 +23,7 @@ public class applycontrol
     @Autowired
     applyrep a1;
 
-    @PostMapping(value = "/apply",consumes = "application/json")
+    @PostMapping(value = "/user/apply",consumes = "application/json")
     public ResponseEntity<?> getuser(@RequestBody apply a)
     {
         try
@@ -38,55 +38,55 @@ public class applycontrol
         }
     }
 
-        @GetMapping("/userid/{userid}")
+        @GetMapping("/user/userid/{userid}")
         public List<apply> getuserid (@PathVariable Long userid)
         {
             return as.userIds(userid);
         }
 
-        @GetMapping("/jobid/{jobid}")
+        @GetMapping("/admin/jobid/{jobid}")
         public List<apply> getjobid (@PathVariable Long jobid)
         {
             return as.jobIds(jobid);
         }
 
-        @PutMapping("/applystatus/{applyid}")
+        @PutMapping("/admin/applystatus/{applyid}")
         public apply updstatus(@PathVariable Long applyid,
                                @RequestParam String status)
         {
             return as.updatestatus(applyid,status);
         }
 
-        @GetMapping("/all")
+        @GetMapping("/admin/all")
         public List<apply> getallapl()
         {
             return as.getall();
         }
 
-        @GetMapping("/count")
+        @GetMapping("/admin/count")
         public Long usercount()
         {
             return a1.count();
         }
-        @GetMapping("/applystatusget/{status}")
+        @GetMapping("/admin/applystatusget/{status}")
         public Long countstatus(@PathVariable String status)
         {
             return a1.countByStatus(status);
         }
 
-        @GetMapping("/getstatus/status/{status}")
+        @GetMapping("/admin/getstatus/status/{status}")
         public List<apply> getbystatuss(@PathVariable String status)
         {
             return as.getbystatus(status);
         }
 
-        @GetMapping("/getuser/{userid}")
+        @GetMapping("/user/getuser/{userid}")
         public List<apply> getuserid(@PathVariable Long userid,@RequestParam(required = false)String status)
         {
             return as.viewbystatus(userid,status);
         }
 
-        @PutMapping("/withdraw/{applyid}")
+        @PutMapping("/user/withdraw/{applyid}")
         public apply withdraw(@PathVariable Long applyid)
         {
             return as.withdrawapplication(applyid);

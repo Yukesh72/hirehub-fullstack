@@ -10,8 +10,7 @@ import java.util.Date;
 @Component
 public class JWTutil
 {
-    private final SecretKey key =
-            Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    private SecretKey key=Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
     public String gentoken(String email,String role)
     {
@@ -35,11 +34,10 @@ public class JWTutil
 
     public String extractEmail(String token)
     {
-        return Jwts.parserBuilder()
+        return Jwts.parser()
                 .setSigningKey(key)
-                .build()
                 .parseClaimsJws(token)
                 .getBody()
-                .getSubject();
+                .get("role",String.class);
     }
 }
